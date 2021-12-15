@@ -24,7 +24,6 @@ app.config.from_object(Config)
 @app.route('/api', methods=['GET', 'POST'])
 def api():
     if request.method == 'POST':
-        print(request.json)
         article_text = get_article_text(request.json['url'])
         article_summary = get_article_summary(article_text)
         return {'summary': article_summary}
