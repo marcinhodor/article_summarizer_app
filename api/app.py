@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from goose3 import Goose
 import requests
 from config import Config
@@ -20,15 +20,25 @@ def get_article_summary(text):
 app = Flask(__name__)
 app.config.from_object(Config)
 
+#Error handling
+@app.errorhandler(Exception)
+def handle_error(err):
+    return jsonify(error=str(err)), 404
+
+# Routes
 @app.route('/api', methods=['GET', 'POST'])
 def api():
   if request.method == 'POST':
+    
     article_data = get_article_data(request.json['url'])
     article_summary = get_article_summary(article_data.cleaned_text)
-    return {
+    
+    response = {
       'title': article_data.title,
       'image_url': article_data.top_image.src,
       'summary': article_summary
       }
+    return response, 200
+  
   else:
     return '<p>API</p>'
