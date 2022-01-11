@@ -70,6 +70,7 @@ function App() {
       </header>
       <main>
         <section>
+          <p className="mb-1">Paste URL to an article:</p>
           <form onSubmit={handleSubmitFromUrl} className="flex flex-col mb-6">
             <div className="flex mb-1">
               <span className="inline-flex items-center px-3 text-sm text-gray-500 bg-white border-t border-b border-l border-gray-300 shadow-sm rounded-l-md">
@@ -119,6 +120,42 @@ function App() {
           ) : null}
         </section>
       </main>
+      <footer className="mt-8">
+        <div>
+          <p>This app is created for educational purposes.</p>{" "}
+          <p>
+            It uses&nbsp;
+            <a
+              className="text-blue-700 underline text-decoration-line:"
+              href="https://huggingface.co/sshleifer/distilbart-cnn-12-6"
+              targe="_blank"
+            >
+              distilbart-cnn-12-6
+            </a>
+            &nbsp;model created by sshleifer and hosted on&nbsp;
+            <a
+              className="text-blue-700 underline text-decoration-line:"
+              href="https://huggingface.co/"
+            >
+              Hugging Face
+            </a>
+            .
+          </p>
+          <p>
+            Project's code can be found{" "}
+            <a
+              href="https://github.com/marcinhodor/article_summarizer_app"
+              target="_blank"
+            >
+              <span className="text-blue-700 underline text-decoration-line:">
+                here
+              </span>
+            </a>
+            .
+          </p>
+          <p>Created by Marcin Hodor. Contact me at mhodor@o2.pl</p>
+        </div>
+      </footer>
     </div>
   );
 }
