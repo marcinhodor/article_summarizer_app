@@ -26,7 +26,7 @@ def handle_error(err):
     return jsonify(error=str(err)), 404
 
 # Routes
-@app.route('/api', methods=['GET', 'POST'])
+@app.route('/api/summary', methods=['GET', 'POST'])
 def api():
   if request.method == 'POST':
     

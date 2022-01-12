@@ -17,7 +17,7 @@ function App() {
     setIsLoadingFromUrl(true);
     setErrorMsg();
 
-    const response = await fetch("/api", {
+    const response = await fetch("/api/summary", {
       method: "POST",
       headers: {
         Accept: "application/json",
