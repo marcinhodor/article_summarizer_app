@@ -10,14 +10,14 @@ def get_article_data(url):
   return data
 
 def get_article_summary(text):
-  API_URL = "https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6"
-  headers = {"Authorization": f"Bearer {app.config['API_TOKEN']}"}
+  API_URL = 'https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6'
+  headers = {'Authorization': f'Bearer {app.config["API_TOKEN"]}'}
   response = requests.post(API_URL, headers=headers, json=text)
   text_summary = response.json()
   return text_summary
 
 # Flask server
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../build', static_url_path='/')
 app.config.from_object(Config)
 
 #Error handling
@@ -26,6 +26,10 @@ def handle_error(err):
     return jsonify(error=str(err)), 404
 
 # Routes
+@app.route('/')
+def index():
+  return app.send_static_file('index.html')
+
 @app.route('/api/summary', methods=['GET', 'POST'])
 def api():
   if request.method == 'POST':
