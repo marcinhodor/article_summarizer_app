@@ -10,7 +10,7 @@ function App() {
   const handleSubmitFromUrl = async (e) => {
     e.preventDefault();
     if (url.length <= 4) {
-      setErrorMsg("Url has to be at least 5 characters long.");
+      setErrorMsg("URL has to be at least 5 characters long.");
       return;
     }
     // Fetch request
